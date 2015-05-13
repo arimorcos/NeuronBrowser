@@ -182,7 +182,7 @@ end
 % dataCell = softThreshDataCell(dataCell);
 
 %bin frames
-if ~isfield(dataCell{1}.imaging,'binnedDGRTraces');
+if ~isfield(dataCell{1}.imaging,'binnedDFFTraces');
     imData.binSize = 5;
     dataCell = binFramesByYPos(dataCell,imData.binSize);
 end
@@ -196,7 +196,7 @@ imData.actByNeuron = actByNeuron;
 imData.imTrials = imTrials;
 
 %update planeSelect listbox
-imData.planeIDs = find(cell2mat(cellfun(@(x) ~isempty(x),dataCell{imTrials(1)}.imaging.binnedDGRTraces,...
+imData.planeIDs = find(cell2mat(cellfun(@(x) ~isempty(x),dataCell{imTrials(1)}.imaging.binnedDFFTraces,...
     'UniformOutput',false))==1);
 set(handles.planeSelect,'String',cellfun(@(x) num2str(x),num2cell(imData.planeIDs),...
     'UniformOutput',false));
